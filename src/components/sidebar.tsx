@@ -11,8 +11,26 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import { Link } from "react-router";
+import type { ISidebar } from "../types/sidebar";
+import { LayoutDashboard, Users } from "lucide-react";
+import { useLocation } from "react-router";
 
 const Sidebar = () => {
+    const location = useLocation()
+  const menuItems: ISidebar[] = [
+    {
+      id: "dashboard",
+      title: "Dashboard",
+      path: "/",
+      icon: LayoutDashboard,
+    },
+    {
+      id: "jobuser",
+      title: "Job User",
+      path: "/job-user",
+      icon: Users,
+    },
+  ];
   return (
     <aside className=" bg-green-500 text-white flex flex-col min-h-screen">
       <div className="p-6 flex items-center gap-3 border-b border-green-400">
@@ -23,30 +41,15 @@ const Sidebar = () => {
       </div>
 
       <nav className="flex-1 px-4 py-6 space-y-2">
-        <Link to={'/'} className="flex items-center gap-3 px-3 py-2 rounded-md bg-green-700/40">
-          <FaTachometerAlt /> Dashboard
-        </Link>
-        <a className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/20">
-          <FaBell /> Notifications
-        </a>
-        <a className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/20">
-          <FaUsers /> Users
-        </a>
-        <Link to={'/job-user'} className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/20">
-          <FaBriefcase /> Jobs
-        </Link>
-        <a className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/20">
-          <FaBuilding /> Departments
-        </a>
-        <a className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/20">
-          <FaFileAlt /> Applications
-        </a>
-        <a className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/20">
-          <FaChartBar /> Analytics
-        </a>
-        <a className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/20">
-          <FaCogs /> Settings
-        </a>
+        {menuItems.map((item, index) => (
+          <Link
+            key={index}
+            to={item.path}
+            className={`flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/40 ${location.pathname == item.path && 'bg-green-700/40'}`}
+          >
+            <item.icon /> {item.title}
+          </Link>
+        ))}
       </nav>
 
       <div className="px-4 pb-6">
@@ -56,7 +59,7 @@ const Sidebar = () => {
       </div>
 
       <div className="p-4 text-sm text-green-50/80 border-t border-green-600">
-        © 2025 JobZone
+        © {new Date().getFullYear()} JobZone
       </div>
     </aside>
   );
