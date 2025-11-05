@@ -1,22 +1,19 @@
-import React from "react";
 import {
-  FaBell,
-  FaBriefcase,
-  FaBuilding,
-  FaChartBar,
-  FaCogs,
-  FaFileAlt,
-  FaSignOutAlt,
-  FaTachometerAlt,
-  FaUsers,
-} from "react-icons/fa";
-import { Link } from "react-router";
+  LayoutDashboard,
+  Bell,
+  Briefcase,
+  Building2,
+  Users,
+  BarChart3,
+  Settings,
+  LogOut,
+} from "lucide-react";
+import { Link, useLocation } from "react-router";
 import type { ISidebar } from "../types/sidebar";
-import { LayoutDashboard, Users } from "lucide-react";
-import { useLocation } from "react-router";
 
 const Sidebar = () => {
-    const location = useLocation()
+  const location = useLocation();
+
   const menuItems: ISidebar[] = [
     {
       id: "dashboard",
@@ -25,14 +22,46 @@ const Sidebar = () => {
       icon: LayoutDashboard,
     },
     {
-      id: "jobuser",
-      title: "Job User",
+      id: "notifications",
+      title: "Notifications",
+      path: "/notifications",
+      icon: Bell,
+    },
+    {
+      id: "jobs",
+      title: "Jobs",
+      path: "/jobs",
+      icon: Briefcase,
+    },
+    {
+      id: "departments",
+      title: "Departments",
+      path: "/departements",
+      icon: Building2,
+    },
+    {
+      id: "users",
+      title: "Users",
       path: "/job-user",
       icon: Users,
     },
+    {
+      id: "analytics",
+      title: "Analytics",
+      path: "/analytics",
+      icon: BarChart3,
+    },
+    {
+      id: "settings",
+      title: "Settings",
+      path: "/settings",
+      icon: Settings,
+    },
   ];
+
   return (
-    <aside className=" bg-green-500 text-white flex flex-col min-h-screen">
+    <aside className="bg-green-500 text-white flex flex-col min-h-screen">
+      {/* Logo Section */}
       <div className="p-6 flex items-center gap-3 border-b border-green-400">
         <div className="w-10 h-10 rounded-full bg-green-300 flex items-center justify-center font-bold">
           JZ
@@ -40,24 +69,29 @@ const Sidebar = () => {
         <h3 className="text-lg font-semibold">JobZone</h3>
       </div>
 
+      {/* Menu */}
       <nav className="flex-1 px-4 py-6 space-y-2">
-        {menuItems.map((item, index) => (
+        {menuItems.map((item) => (
           <Link
-            key={index}
+            key={item.id}
             to={item.path}
-            className={`flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/40 ${location.pathname == item.path && 'bg-green-700/40'}`}
+            className={`flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/40 ${
+              location.pathname === item.path ? "bg-green-700/40" : ""
+            }`}
           >
-            <item.icon /> {item.title}
+            <item.icon size={18} /> {item.title}
           </Link>
         ))}
       </nav>
 
+      {/* Logout Button */}
       <div className="px-4 pb-6">
-        <a className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/20">
-          <FaSignOutAlt /> Logout
-        </a>
+        <button className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/20 w-full text-left">
+          <LogOut size={18} /> Logout
+        </button>
       </div>
 
+      {/* Footer */}
       <div className="p-4 text-sm text-green-50/80 border-t border-green-600">
         © {new Date().getFullYear()} JobZone
       </div>
@@ -66,3 +100,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+ 
