@@ -14,8 +14,8 @@ export default function Dashboard() {
   const stats = [
     { title: "New Users", value: 1284, subtitle: "Since last week" },
     { title: "Active Jobs", value: 75, subtitle: "Open positions" },
-    { title: "Applications", value: 452, subtitle: "This month" },
-    { title: "Messages", value: 93, subtitle: "Unread" },
+    { title: "Total Jobs", value: 452, subtitle: "This month" },
+    { title: "Compnies", value: 93, subtitle: "Unread" },
   ];
 
   const activities = [

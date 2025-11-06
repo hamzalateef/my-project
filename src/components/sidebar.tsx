@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router";
 import type { ISidebar } from "../types/sidebar";
-import { LayoutDashboard, Users } from "lucide-react";
+import { AppWindow, Cog, Command, LayoutDashboard, Users } from "lucide-react";
 import { useLocation } from "react-router";
 
 const Sidebar = () => {
@@ -30,9 +30,33 @@ const Sidebar = () => {
       path: "/job-user",
       icon: Users,
     },
-  ];
+    {
+      id: "jobmanagement",
+      title: "Manage Jobs",
+      path: "/job-management",
+      icon: Users,
+    },
+    {
+      id: "departments",
+      title: "Departments",
+      path: "/departments",
+      icon: AppWindow,
+    },
+    {
+      id: "companies",
+      title: "Companies",
+      path: "/companies",
+      icon: Command,
+    },
+    {
+      id: "settings",
+      title: "Settings",
+      path: "/settings",
+      icon: Cog,
+    },
+    ];
   return (
-    <aside className=" bg-green-500 text-white flex flex-col min-h-screen">
+    <aside className="bg-green-500 text-white flex flex-col min-h-screen">
       <div className="p-6 flex items-center gap-3 border-b border-green-400">
         <div className="w-10 h-10 rounded-full bg-green-300 flex items-center justify-center font-bold">
           JZ
@@ -45,7 +69,7 @@ const Sidebar = () => {
           <Link
             key={index}
             to={item.path}
-            className={`flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/40 ${location.pathname == item.path && 'bg-green-700/40'}`}
+            className={`flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/40 ${location.pathname.includes(item.path) && 'bg-green-700/40'}`}
           >
             <item.icon /> {item.title}
           </Link>
