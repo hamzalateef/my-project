@@ -6,46 +6,67 @@ export default function Companies() {
     {
       id: 1,
       company: "TechWave Ltd",
-      location: "Lahore, Pakistan",
-      status: "Open",
-      date: "07/06/2025",
+      image: "https://cdn-icons-png.flaticon.com/512/1048/1048949.png",
+      description:
+        "Innovative tech solutions provider delivering smart, scalable software for modern businesses.",
+      status: "Public",
+      created: "07/06/2025",
+      updated: "07/06/2026",
     },
     {
       id: 2,
       company: "SoftCore Inc",
-      location: "Karachi, Pakistan",
-      status: "Closed",
-      date: "18/04/2024",
+      image: "https://cdn-icons-png.flaticon.com/512/1048/1048913.png",
+      description: "...",
+      status: "Private",
+      created: "18/04/2024",
+      updated: "18/04/2025",
     },
     {
       id: 3,
       company: "SoftCore Inc",
-      location: "Karachi, Pakistan",
-      status: "Not Announced",
-      date: "09/01/2023",
+      image: "https://cdn-icons-png.flaticon.com/512/742/742751.png",
+      description:
+        "Leading technology firm building reliable software products for various industry requirements.",
+      status: "Public",
+      created: "09/01/2023",
+      updated: "09/01/2025",
     },
     {
       id: 4,
       company: "Designify Studio",
-      location: "Remote",
-      status: "Coming Soon",
-      date: "15/03/2024",
+      image: "https://cdn-icons-png.flaticon.com/512/1828/1828884.png",
+      description:
+        "Creative design agency delivering unique branding, UI/UX, and modern digital experiences.",
+      status: "Private",
+      created: "15/03/2024",
+      updated: "15/03/2025",
     },
   ];
+
   return (
     <main className="flex-1 p-6 md:p-8 bg-gray-100 min-h-screen overflow-y-auto">
-      <Header title={"Company"} inputtitle={"Search Company..."} jobmodel={"Add Company"}/>
+      <Header
+        title={"Company"}
+        inputtitle={"Search Company..."}
+        jobmodel={"Add Company"}
+      />
 
       <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden mt-5">
         <div className="overflow-x-auto">
           <table className="min-w-full text-sm text-gray-700">
-            <thead className="bg-gradient-to-r from-green-600 to-emerald-500 text-white text-xs uppercase tracking-wide">
+            <thead className="bg-gradient-to-r from-green-600 to-emerald-500 w-full text-white text-xs uppercase tracking-wide">
               <tr>
                 <th className="px-6 py-4 text-left font-semibold">Id</th>
                 <th className="px-6 py-4 text-left font-semibold">Company</th>
+                <th className="px-6 py-4 text-left font-semibold">Image</th>
                 <th className="px-6 py-4 text-left font-semibold">Location</th>
+                <th className="px-6 py-4 text-left font-semibold">
+                  Description
+                </th>
                 <th className="px-6 py-4 text-left font-semibold">Status</th>
-                <th className="px-6 py-4 text-center font-semibold">Date</th>
+                <th className="px-6 py-4 text-center font-semibold">Created</th>
+                <th className="px-6 py-4 text-center font-semibold">Updated</th>
                 <th className="px-6 py-4 text-right font-semibold">Actions</th>
               </tr>
             </thead>
@@ -61,42 +82,42 @@ export default function Companies() {
                   <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                     {job.id}
                   </td>
-                  <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{job.company}</td>
+                  <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    {job.company}
+                  </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {job.location}
+                    <img
+                      src={job.image ? job.image : "/default-company.png"}
+                      alt="Company Logo"
+                      className="w-10 h-10 rounded-full object-cover border border-gray-300 shadow-sm"
+                    />
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {job.description}
                   </td>
                   <td className="px-6 py-4">
                     <span
                       className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium ${
-                        job.status === "Open"
+                        job.status === "Public"
                           ? "bg-green-50 border border-gray-200 text-green-600"
-                          : job.status === "Closed"
-                          ? "bg-red-50 border border-gray-200 text-red-600"
-                          : job.status === "Coming Soon"
-                          ? "bg-blue-50 border border-gray-200 text-blue-600"
-                          : job.status === "Not Announced"
-                          ? "bg-yellow-50 border border-gray-200 text-yellow-600"
-                          : "bg-gray-50 border border-gray-200 text-gray-600"
+                          : "bg-red-50 border border-gray-200 text-red-600"
                       }`}
                     >
                       <span
                         className={`w-2 h-2 rounded-full ${
-                          job.status === "Open"
+                          job.status === "Public"
                             ? "bg-green-500"
-                            : job.status === "Closed"
-                            ? "bg-red-500"
-                            : job.status === "Coming Soon"
-                            ? "bg-blue-500"
-                            : job.status === "Not Announced"
-                            ? "bg-yellow-500"
-                            : "bg-gray-400"
+                            : "bg-red-500"
                         }`}
                       ></span>
                       {job.status}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-center font-semibold text-gray-800">
-                    {job.date}
+                    {job.created}
+                  </td>
+                  <td className="px-6 py-4 text-center font-semibold text-gray-800">
+                    {job.updated}
                   </td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-3">

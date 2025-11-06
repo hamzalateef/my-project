@@ -1,9 +1,6 @@
-import React from "react";
 import { Navigate, Route, Routes } from "react-router";
 import Dashboard from "./pages/dashboard";
 import Sidebar from "./components/sidebar";
-import JobUsers from "./pages/jobusers";
-import Header from "./components/header";
 import JobManage from "./pages/jobmanage";
 import Setting from "./pages/setting/setting";
 import Profile from "./pages/setting/profile";
@@ -21,7 +18,6 @@ const App = () => {
         {/* <Header/> */}
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/job-user" element={<JobUsers />} />
           <Route path="/job-management" element={<JobManage />} />
           <Route path="/departments" element={<Departments />} />
           <Route path="/companies" element={<Companies />} />
