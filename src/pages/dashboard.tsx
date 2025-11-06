@@ -1,18 +1,14 @@
-import {
-  Users,
-  Briefcase,
-  FileText,
-  Bell,
-} from "lucide-react";
+
 
 export default function Dashboard() {
   const stats = [
-    { title: "New Users", value: 1284, subtitle: "Since last week", icon: <Users size={20} /> },
-    { title: "Active Jobs", value: 75, subtitle: "Open positions", icon: <Briefcase size={20} /> },
-    { title: "Applications", value: 452, subtitle: "This month", icon: <FileText size={20} /> },
-    { title: "Messages", value: 93, subtitle: "Unread", icon: <Bell size={20} /> },
+    { title: "New Users", value: 1284, subtitle: "Since last week" },
+    { title: "Active Jobs", value: 75, subtitle: "Open positions" },
+    { title: "Total Jobs", value: 452, subtitle: "This month" },
+    { title: "Compnies", value: 93, subtitle: "Unread" },
   ];
 
+  
   return (
     <main className="flex-1 p-6 overflow-y-auto">
       <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
@@ -27,7 +23,7 @@ export default function Dashboard() {
               <div className="text-xs text-gray-400 mt-1">{s.subtitle}</div>
             </div>
             <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-green-100 text-green-700 text-xl">
-              {s.icon}
+              {}
             </div>
           </div>
         ))}
