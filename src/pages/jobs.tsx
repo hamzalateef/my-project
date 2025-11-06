@@ -1,11 +1,5 @@
-
-
-const jobs = () => {
+export default function Jobs() {
   return (
-    <div>
-      
-    </div>
+    <div></div>
   )
-}
-
-export default jobs
+};

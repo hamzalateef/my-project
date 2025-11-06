@@ -23,27 +23,9 @@ const Sidebar = () => {
       icon: LayoutDashboard,
     },
     {
-      id: "notifications",
-      title: "Notifications",
-      path: "/notifications",
-      icon: Bell,
-    },
-    {
       id: "jobs",
       title: "Jobs",
       path: "/jobs",
-      icon: Briefcase,
-    },
-    {
-      id: "departments",
-      title: "Departments",
-      path: "/departements",
-      icon: Building2,
-    },
-    {
-      id: "users",
-      title: "Users",
-      path: "/job-user",
       icon: Users,
     },
     {
@@ -53,9 +35,9 @@ const Sidebar = () => {
       icon: Users,
     },
     {
-      id: "departments",
-      title: "Departments",
-      path: "/departments",
+      id: "department",
+      title: "Department",
+      path: "/department",
       icon: AppWindow,
     },
     {
