@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { ChartAreaLegend } from "@/components/vacancy-chart";
 import {
   FaTachometerAlt,
   FaBell,
@@ -88,40 +90,7 @@ export default function Dashboard() {
 
         <div className="col-span-1 lg:col-span-2 space-y-4">
           <div className="bg-white p-4 rounded-lg shadow">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold">Vacancy Status</h3>
-              <div className="text-sm text-gray-500">This Month</div>
-            </div>
-
-            <div className="w-full h-56">
-              <svg viewBox="0 0 500 200" className="w-full h-full">
-                <defs>
-                  <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#34D399" stopOpacity="0.25" />
-                    <stop offset="100%" stopColor="#34D399" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <line
-                    key={i}
-                    x1="0"
-                    x2="600"
-                    y1={20 + i * 36}
-                    y2={20 + i * 36}
-                    stroke="#e6f4ea"
-                    strokeWidth="1"
-                  />
-                ))}
-                <path
-                  d="M0,120 C80,80 160,140 240,60 C320,20 400,120 480,70 C560,40 600,80"
-                  fill="url(#g1)"
-                  stroke="#059669"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
+              <ChartAreaLegend />
           </div>
 
           <div className="bg-white p-4 rounded-lg shadow grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -144,9 +113,9 @@ export default function Dashboard() {
             <div>
               <h4 className="font-semibold mb-2">Quick Actions</h4>
               <div className="flex flex-col gap-2">
-                <button className="px-4 py-2 rounded-md bg-green-500 text-white">
+                <Button className="bg-green-500 hover:bg-green-700">
                   Create Job
-                </button>
+                </Button>
                 <button className="px-4 py-2 rounded-md border border-green-200 text-green-700">
                   Invite User
                 </button>
