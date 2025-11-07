@@ -1,7 +1,7 @@
 import { FaBriefcase, FaEdit, FaPlus, FaSearch, FaTrash } from "react-icons/fa";
 import Header from "../components/header";
 
-export default function Departments() {
+export default function Department() {
   const jobs = [
     {
       id: 1,
@@ -48,8 +48,8 @@ export default function Departments() {
     <main className="flex-1 p-6 md:p-8 bg-gray-100 min-h-screen overflow-y-auto">
       <Header
         title={"Departments"}
-        inputtitle={"Search Departments..."}
-        jobmodel={"Add Departments"}
+        inputtitle={"Search Department..."}
+        jobmodel={"Add Department"}
       />
 
       <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden mt-5">
