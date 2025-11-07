@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Button } from "@/components/ui/button";
 import { ChartAreaLegend } from "@/components/vacancy-chart";
 import {
@@ -12,9 +11,6 @@ import {
   FaCogs,
   FaSignOutAlt,
 } from "react-icons/fa";
-=======
-
->>>>>>> 76002e6930b8637a8770f6936e615a461ee379f3
 
 export default function Dashboard() {
   const stats = [
@@ -22,6 +18,13 @@ export default function Dashboard() {
     { title: "Active Jobs", value: 75, subtitle: "Open positions" },
     { title: "Total Jobs", value: 452, subtitle: "This month" },
     { title: "Compnies", value: 93, subtitle: "Unread" },
+  ];
+
+  const activities = [
+    "User Ali signed up",
+    'Job "Frontend Dev" approved',
+    "Report generated: Oct 28",
+    "Sana updated profile",
   ];
 
   
@@ -45,7 +48,6 @@ export default function Dashboard() {
         ))}
       </section>
 
-<<<<<<< HEAD
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="col-span-1 space-y-4">
           <div className="bg-white p-4 rounded-lg shadow">
@@ -126,9 +128,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-=======
-      {/* rest of your layout */}
->>>>>>> 76002e6930b8637a8770f6936e615a461ee379f3
     </main>
   );
 }
