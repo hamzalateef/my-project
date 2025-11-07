@@ -1,4 +1,4 @@
-import React from "react";
+
 import { FaBriefcase, FaPlus, FaSearch } from "react-icons/fa";
 import type { HJob } from "../types/header";
 

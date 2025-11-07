@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Button } from "@/components/ui/button";
 import { ChartAreaLegend } from "@/components/vacancy-chart";
 import {
@@ -11,6 +12,9 @@ import {
   FaCogs,
   FaSignOutAlt,
 } from "react-icons/fa";
+=======
+
+>>>>>>> 76002e6930b8637a8770f6936e615a461ee379f3
 
 export default function Dashboard() {
   const stats = [
@@ -20,13 +24,7 @@ export default function Dashboard() {
     { title: "Compnies", value: 93, subtitle: "Unread" },
   ];
 
-  const activities = [
-    "User Ali signed up",
-    'Job "Frontend Dev" approved',
-    "Report generated: Oct 28",
-    "Sana updated profile",
-  ];
-
+  
   return (
     <main className="flex-1 p-6 overflow-y-auto">
       <section className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
@@ -40,13 +38,14 @@ export default function Dashboard() {
               <div className="text-2xl font-bold">{s.value}</div>
               <div className="text-xs text-gray-400 mt-1">{s.subtitle}</div>
             </div>
-            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-green-100 text-green-700 font-semibold">
-              +{Math.floor(Math.random() * 12) + 1}%
+            <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-green-100 text-green-700 text-xl">
+              {}
             </div>
           </div>
         ))}
       </section>
 
+<<<<<<< HEAD
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="col-span-1 space-y-4">
           <div className="bg-white p-4 rounded-lg shadow">
@@ -127,6 +126,9 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
+=======
+      {/* rest of your layout */}
+>>>>>>> 76002e6930b8637a8770f6936e615a461ee379f3
     </main>
   );
 }
