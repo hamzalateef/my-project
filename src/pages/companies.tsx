@@ -60,7 +60,6 @@ export default function Companies() {
                 <th className="px-6 py-4 text-left font-semibold">Id</th>
                 <th className="px-6 py-4 text-left font-semibold">Company</th>
                 <th className="px-6 py-4 text-left font-semibold">Image</th>
-                <th className="px-6 py-4 text-left font-semibold">Location</th>
                 <th className="px-6 py-4 text-left font-semibold">
                   Description
                 </th>
