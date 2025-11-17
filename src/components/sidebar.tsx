@@ -24,12 +24,6 @@ const Sidebar = () => {
       icon: Users,
     },
     {
-      id: "jobmanagement",
-      title: "Manage Jobs",
-      path: "/job-management",
-      icon: Users,
-    },
-    {
       id: "department",
       title: "Department",
       path: "/department",

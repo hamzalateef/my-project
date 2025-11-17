@@ -1,5 +1,11 @@
 import { FaBriefcase, FaEdit, FaPlus, FaSearch, FaTrash } from "react-icons/fa";
 import Header from "../components/header";
+import { Command } from "@/components/ui/command";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
+import { Search } from "lucide-react";
+import JobFormModal from "@/components/job-modal";
+import CompaniesFormModal from "@/components/job-modal";
+import CompanyFormModal from "@/components/company-modal";
 
 export default function Companies() {
   const jobs = [
@@ -46,16 +52,25 @@ export default function Companies() {
 
   return (
     <main className="flex-1 p-6 md:p-8 bg-gray-100 min-h-screen overflow-y-auto">
-      <Header
-        title={"Company"}
-        inputtitle={"Search Company..."}
-        jobmodel={"Add Company"}
-      />
 
-      <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden mt-5">
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-sm text-gray-700">
-            <thead className="bg-gradient-to-r from-green-600 to-emerald-500 w-full text-white text-xs uppercase tracking-wide">
+      <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden p-4 mt-3">
+        <div className="flex justify-between items-center gap-4 mb-4 mt-2">
+          <div className="text-2xl ml-3">
+            <b>All Companies</b>
+          </div>
+          <div className="flex justify-end items-center gap-4">
+            <InputGroup className="w-full md:w-72 bg-white">
+              <InputGroupInput placeholder="Search..." />
+              <InputGroupAddon>
+                <Search />
+              </InputGroupAddon>
+            </InputGroup>
+            <CompanyFormModal />
+          </div>
+        </div>
+        <div className="overflow-x-auto rounded-xl">
+          <table className="min-w-full text-sm text-gray-700 rounded-xl">
+            <thead className="bg-gradient-to-r from-green-600 to-emerald-500 w-full text-white text-xs uppercase tracking-wide rounded-xl">
               <tr>
                 <th className="px-6 py-4 text-left font-semibold">Id</th>
                 <th className="px-6 py-4 text-left font-semibold">Company</th>

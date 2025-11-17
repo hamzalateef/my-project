@@ -1,5 +1,9 @@
 import { FaBriefcase, FaEdit, FaPlus, FaSearch, FaTrash } from "react-icons/fa";
 import Header from "../components/header";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
+import { Search } from "lucide-react";
+import CompaniesFormModal from "@/components/dep-modal";
+import DeparmentFormModal from "@/components/dep-modal";
 
 export default function Department() {
   const jobs = [
@@ -46,16 +50,25 @@ export default function Department() {
 
   return (
     <main className="flex-1 p-6 md:p-8 bg-gray-100 min-h-screen overflow-y-auto">
-      <Header
-        title={"Departments"}
-        inputtitle={"Search Department..."}
-        jobmodel={"Add Department"}
-      />
 
-      <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden mt-5">
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-sm text-gray-700">
-            <thead className="bg-gradient-to-r from-green-600 to-emerald-500 text-white text-xs uppercase tracking-wide">
+      <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden p-4 mt-3">
+        <div className="flex justify-between items-center gap-4 mb-4 mt-2">
+          <div className="text-2xl ml-3">
+            <b>All Departments</b>
+          </div>
+          <div className="flex justify-end items-center gap-4">
+            <InputGroup className="w-full md:w-72 bg-white">
+              <InputGroupInput placeholder="Search..." />
+              <InputGroupAddon>
+                <Search />
+              </InputGroupAddon>
+            </InputGroup>
+            <DeparmentFormModal />
+          </div>
+        </div>
+        <div className="overflow-x-auto rounded-xl">
+          <table className="min-w-full text-sm text-gray-700 rounded-xl">
+            <thead className="bg-gradient-to-r from-green-600 to-emerald-500 text-white text-xs uppercase tracking-wide rounded-xl">
               <tr>
                 <th className="px-6 py-4 text-left font-semibold">Id</th>
                 <th className="px-6 py-4 text-left font-semibold">

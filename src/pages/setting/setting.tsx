@@ -45,6 +45,8 @@ const Setting = () => {
       {/* Main Content */}
       <main className="flex-1 rounded-2xl bg-white shadow-sm border border-gray-200 p-6">
         <Outlet />
+
+        
       </main>
     </div>
   );

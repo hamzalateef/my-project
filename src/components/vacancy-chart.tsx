@@ -27,6 +27,12 @@ const chartData = [
   { month: "April", desktop: 73, mobile: 190 },
   { month: "May", desktop: 209, mobile: 130 },
   { month: "June", desktop: 214, mobile: 140 },
+  { month: "July", desktop: 117, mobile: 120 },
+  { month: "August", desktop: 271, mobile: 198 },
+  { month: "September", desktop: 214, mobile: 117 },
+  { month: "October", desktop: 104, mobile: 152 },
+  { month: "November", desktop: 197, mobile: 163 },
+  { month: "December", desktop: 231, mobile: 147 },
 ]
 
 const chartConfig = {
@@ -35,7 +41,7 @@ const chartConfig = {
     color: "var(--chart-1)",
   },
   mobile: {
-    label: "Mobile",
+    label: "Users",
     color: "var(--chart-2)",
   },
 } satisfies ChartConfig
@@ -44,9 +50,9 @@ export function ChartAreaLegend() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Area Chart - Legend</CardTitle>
+        <CardTitle>Daily Users</CardTitle>
         <CardDescription>
-          Showing total visitors for the last 6 months
+          Showing total Users for the last 6 months
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -55,8 +61,10 @@ export function ChartAreaLegend() {
             accessibilityLayer
             data={chartData}
             margin={{
-              left: 12,
-              right: 12,
+              left: 10,
+              right: 10,
+              top: 25,
+              bottom: 15,
             }}
           >
             <CartesianGrid vertical={false} />
@@ -79,14 +87,6 @@ export function ChartAreaLegend() {
               stroke="var(--color-mobile)"
               stackId="a"
             />
-            <Area
-              dataKey="desktop"
-              type="natural"
-              fill="var(--color-desktop)"
-              fillOpacity={0.4}
-              stroke="var(--color-desktop)"
-              stackId="a"
-            />
             <ChartLegend content={<ChartLegendContent />} />
           </AreaChart>
         </ChartContainer>
@@ -98,7 +98,7 @@ export function ChartAreaLegend() {
               Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
             </div>
             <div className="text-muted-foreground flex items-center gap-2 leading-none">
-              January - June 2024
+              January - November 2025
             </div>
           </div>
         </div>
