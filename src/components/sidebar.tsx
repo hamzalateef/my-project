@@ -1,7 +1,4 @@
-import {
- 
-  LogOut,
-} from "lucide-react";
+import { LogOut } from "lucide-react";
 
 import type { ISidebar } from "../types/sidebar";
 import { AppWindow, Cog, Command, LayoutDashboard, Users } from "lucide-react";
@@ -41,7 +38,7 @@ const Sidebar = () => {
       path: "/settings",
       icon: Cog,
     },
-    ];
+  ];
   return (
     <aside className="bg-green-500 text-white flex flex-col min-h-screen">
       <div className="p-6 flex items-center gap-3 border-b border-green-400">
@@ -57,18 +54,19 @@ const Sidebar = () => {
           <Link
             key={item.id}
             to={item.path}
-            className={`flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/40 ${location.pathname.includes(item.path) && 'bg-green-700/40'}`}
+            className={`flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/40 ${location.pathname.includes(item.path) && "bg-green-700/40"}`}
           >
             <item.icon size={18} /> {item.title}
           </Link>
         ))}
       </nav>
 
-      {/* Logout Button */}
       <div className="px-4 pb-6">
-        <button className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/20 w-full text-left">
-          <LogOut size={18} /> Logout
-        </button>
+        <Link to={"../pages/login.tsx"}>
+          <button className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-green-700/20 w-full">
+            <LogOut size={18} /> Logout
+          </button>
+        </Link>
       </div>
 
       {/* Footer */}
@@ -80,4 +78,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
- 

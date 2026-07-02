@@ -1,8 +1,12 @@
 import { FaBriefcase, FaEdit, FaPlus, FaSearch, FaTrash } from "react-icons/fa";
 import Header from "../components/header";
 import { Command } from "@/components/ui/command";
-import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
-import { Search } from "lucide-react";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import { Link, Search } from "lucide-react";
 import JobFormModal from "@/components/job-modal";
 import CompaniesFormModal from "@/components/job-modal";
 import CompanyFormModal from "@/components/company-modal";
@@ -52,7 +56,6 @@ export default function Companies() {
 
   return (
     <main className="flex-1 p-6 md:p-8 bg-gray-100 min-h-screen overflow-y-auto">
-
       <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden p-4 mt-3">
         <div className="flex justify-between items-center gap-4 mb-4 mt-2">
           <div className="text-2xl ml-3">
@@ -139,7 +142,7 @@ export default function Companies() {
                         title="Edit Job"
                         className="p-2 rounded-md hover:bg-green-100 text-green-500 hover:text-green-600 transition-all"
                       >
-                        <FaEdit size={14} />
+                          <FaEdit size={14} />
                       </button>
                       <button
                         title="Delete Job"

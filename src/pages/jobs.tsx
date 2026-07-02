@@ -262,14 +262,14 @@ export default function Jobs() {
                     <td className="px-6 py-4 text-center font-semibold text-gray-800">
                       {job.date}
                     </td>
-                    <div className="pt-5 text-center">
+                    <td className="px-6 py-4 text-center">
                       <a
                         href="#"
                         className="text-center text-green-500 border-b border-green-500"
                       >
                         {job.link}
                       </a>
-                    </div>
+                    </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-3">
                         <button

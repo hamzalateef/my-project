@@ -3,12 +3,14 @@ import Dashboard from "./pages/dashboard";
 import Sidebar from "./components/sidebar";
 import Setting from "./pages/setting/setting";
 import Profile from "./pages/setting/profile";
-import Content from "./pages/setting/content";
+import Notifications from "./pages/setting/notifications";
 import Companies from "./pages/companies";
 import Department from "./pages/department";
 import Jobs from "./pages/jobs";
+import login from "./pages/login";
 import Header from "./components/header";
 import { useLocation } from "react-router";
+import Login from "./pages/login";
 
 const App = () => {
   const location = useLocation();
@@ -27,10 +29,11 @@ const App = () => {
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/department" element={<Department />} />
           <Route path="/companies" element={<Companies />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/settings" element={<Setting />}>
             <Route index element={<Navigate to="profile" replace />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="content" element={<Content />} />
+            <Route path="notifications" element={<Notifications />} />
           </Route>
         </Routes>
       </div>

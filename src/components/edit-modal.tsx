@@ -39,7 +39,7 @@ interface JobFormModalProps {
   triggerIcon?: React.ReactNode
 }
 
-const JobFormModal = ({
+const EditFormModal = ({
   triggerLabel = "Add New Job",
   triggerClassName = "bg-green-600 hover:bg-green-700 text-white gap-1",
   triggerIcon,
@@ -328,4 +328,4 @@ const JobFormModal = ({
   );
 };
 
-export default JobFormModal;
+export default EditFormModal;

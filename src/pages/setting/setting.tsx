@@ -7,7 +7,7 @@ const Setting = () => {
 
   const menuItems = [
     { name: "Profile", icon: <User size={18} /> },
-    { name: "Content", icon: <Notebook size={18} /> },
+    { name: "Notifications", icon: <Notebook size={18} /> },
   ];
 
   return (
@@ -21,6 +21,7 @@ const Setting = () => {
         <nav className="flex flex-col gap-2">
           {menuItems.map((item) => (
             <Link
+              key={item.name}
               onClick={() => setActive(item.name)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                 active === item.name
@@ -43,10 +44,8 @@ const Setting = () => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 rounded-2xl bg-white shadow-sm border border-gray-200 p-6">
+      <main className="flex-1  rounded-2xl bg-white shadow-sm border border-gray-200">
         <Outlet />
-
-        
       </main>
     </div>
   );
