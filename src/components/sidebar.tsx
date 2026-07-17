@@ -85,7 +85,6 @@ const Sidebar = () => {
         ))}
       </nav>
 
-      {/* Logout Button */}
       <div className="px-4 pb-6">
         <Link
           to="/login"

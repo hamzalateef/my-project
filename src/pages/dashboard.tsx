@@ -11,6 +11,7 @@ import {
   Link,
 } from "lucide-react";
 import {
+  FaPlus,
   FaTachometerAlt,
   FaBell,
   FaUsers,
@@ -89,6 +90,24 @@ export default function Dashboard() {
         </div>
         <div className="bg-white p-4 rounded-lg shadow">
           <ChartAreaLegend />
+        </div>
+      </div>
+      <div className="bg-white p-4 rounded-lg shadow w-96 mt-5">
+        <div>
+          <h4 className="font-semibold mb-2">Quick Actions</h4>
+          <div className="flex flex-col gap-2.5 mb-2">
+            <JobFormModal
+              triggerLabel="Create Job"
+              triggerClassName="bg-green-500 hover:bg-green-600 hover:text-white"
+              triggerIcon={<FaPlus />}
+            />
+            <Button className="px-4 py-2 rounded-md bg-gray-50 border border-green-400 text-green-500 hover:text-white hover:bg-green-600">
+              Invite User
+            </Button>
+            <Button className="px-4 py-2 rounded-md text-gray-500 hover:text-white bg-gray-50 border border-gray-400 hover:bg-black">
+              Export CSV
+            </Button>
+          </div>
         </div>
       </div>
     </main>

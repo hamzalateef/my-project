@@ -39,7 +39,10 @@ interface JobFormModalProps {
   triggerIcon?: React.ReactNode
 }
 
-const JobFormModal = ({
+const EditFormModal = ({
+  triggerLabel = "Add New Job",
+  triggerClassName = "bg-green-600 hover:bg-green-700 text-white gap-1",
+  triggerIcon,
 }: JobFormModalProps) => {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -55,20 +58,20 @@ const JobFormModal = ({
       requirement: "",
       education: "",
       jobtype: "",
-      posted: "",
       expire: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof loginSchema>) {
     console.log(values);
+    // alert("Form submitted successfully!");
   }
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="text-white gap-1 bg-green-600 hover:bg-green-700">
-          <FaPlus />
-          Create Job
+        <Button className={triggerClassName}>
+          {triggerIcon}
+          {triggerLabel}
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-2xl h-96 overflow-y-auto">
@@ -187,7 +190,7 @@ const JobFormModal = ({
 
               <FormField
                 control={form.control}
-                name="posted"
+                name="requirement"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Date Posted</FormLabel>
@@ -325,4 +328,4 @@ const JobFormModal = ({
   );
 };
 
-export default JobFormModal;
+export default EditFormModal;

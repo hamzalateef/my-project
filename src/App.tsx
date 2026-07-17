@@ -6,6 +6,7 @@ import Setting from "./pages/setting/setting";
 import Companies from "./pages/companies";
 import Department from "./pages/department";
 import Jobs from "./pages/jobs";
+import login from "./pages/login";
 import Header from "./components/header";
 import Users from "./pages/users";
 import Signup from "./pages/signup";
