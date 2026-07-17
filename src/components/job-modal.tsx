@@ -48,20 +48,20 @@ const JobFormModal = () => {
       requirement: "",
       education: "",
       jobtype: "",
+      posted: "",
       expire: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof loginSchema>) {
     console.log(values);
-    // alert("Form submitted successfully!");
   }
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-green-600 hover:bg-green-700 text-white gap-1">
+        <Button className="text-white gap-1 bg-green-600 hover:bg-green-700">
           <FaPlus />
-          Add New Job
+          Create Job
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-2xl h-96 overflow-y-auto">
@@ -180,7 +180,7 @@ const JobFormModal = () => {
 
               <FormField
                 control={form.control}
-                name="requirement"
+                name="posted"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Date Posted</FormLabel>

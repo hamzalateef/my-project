@@ -1,11 +1,17 @@
 import { FaBriefcase, FaEdit, FaPlus, FaSearch, FaTrash } from "react-icons/fa";
 import Header from "../components/header";
 import { Command } from "@/components/ui/command";
-import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 import { Search } from "lucide-react";
 import JobFormModal from "@/components/job-modal";
 import CompaniesFormModal from "@/components/job-modal";
 import CompanyFormModal from "@/components/company-modal";
+import Trash from "@/components/trash";
+import Edit from "@/components/edit";
 
 export default function Companies() {
   const jobs = [
@@ -52,6 +58,47 @@ export default function Companies() {
 
   return (
     <main className="flex-1 p-6 md:p-8 bg-gray-100 min-h-screen overflow-y-auto">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          {
+            label: "Total Companies",
+            value: 128,
+            change: "+5",
+            color: "green",
+          },
+          {
+            label: "Public Companies",
+            value: 83,
+            change: "+2",
+            color: "green",
+          },
+          { label: "Private Companies", value: 54, change: "+4", color: "red" },
+          { label: "Opening Soon", value: 18, change: "+3", color: "yellow" },
+        ].map((stat, i) => (
+          <div
+            key={i}
+            className="p-5 rounded-lg border bg-white hover:shadow-lg transition-all flex items-center justify-between"
+          >
+            <div>
+              <div className="text-sm text-gray-500">{stat.label}</div>
+              <div className="text-2xl font-bold text-gray-800">
+                {stat.value}
+              </div>
+            </div>
+            <div
+              className={`w-12 h-12 flex items-center justify-center rounded-lg font-semibold ${
+                stat.color === "green"
+                  ? "bg-green-100 text-green-700"
+                  : stat.color === "red"
+                  ? "bg-red-100 text-red-600"
+                  : "bg-yellow-100 text-yellow-700"
+              }`}
+            >
+              {stat.change}
+            </div>
+          </div>
+        ))}
+      </section>
 
       <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden p-4 mt-3">
         <div className="flex justify-between items-center gap-4 mb-4 mt-2">
@@ -111,7 +158,7 @@ export default function Companies() {
                   </td>
                   <td className="px-6 py-4">
                     <span
-                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium ${
+                      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${
                         job.status === "Public"
                           ? "bg-green-50 border border-gray-200 text-green-600"
                           : "bg-red-50 border border-gray-200 text-red-600"
@@ -139,13 +186,13 @@ export default function Companies() {
                         title="Edit Job"
                         className="p-2 rounded-md hover:bg-green-100 text-green-500 hover:text-green-600 transition-all"
                       >
-                        <FaEdit size={14} />
+                        <Edit />
                       </button>
                       <button
                         title="Delete Job"
-                        className="p-2 rounded-md hover:bg-red-100 text-red-500 hover:text-red-500 transition-all"
+                        className="p-2 rounded-md hover:bg-red-100 text-red-500 hover:text-red-500 transition-all justify-center item-center"
                       >
-                        <FaTrash size={14} />
+                        <Trash />
                       </button>
                     </div>
                   </td>

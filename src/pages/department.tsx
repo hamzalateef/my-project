@@ -1,9 +1,15 @@
 import { FaBriefcase, FaEdit, FaPlus, FaSearch, FaTrash } from "react-icons/fa";
 import Header from "../components/header";
-import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
 import { Search } from "lucide-react";
 import CompaniesFormModal from "@/components/dep-modal";
 import DeparmentFormModal from "@/components/dep-modal";
+import Trash from "@/components/trash";
+import Edit from "@/components/edit";
 
 export default function Department() {
   const jobs = [
@@ -49,7 +55,43 @@ export default function Department() {
   ];
 
   return (
-    <main className="flex-1 p-6 md:p-8 bg-gray-100 min-h-screen overflow-y-auto">
+    <main className="flex-1 p-6 md:px-8 bg-gray-100 min-h-screen overflow-y-auto">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          {
+            label: "Total Departments",
+            value: 128,
+            change: "+5",
+            color: "green",
+          },
+          { label: "Open Departments", value: 93, change: "+3", color: "green" },
+          { label: "New Departments", value: 83, change: "+2", color: "green" },
+          { label: "Opening Soon", value: 18, change: "+5", color: "yellow" },
+        ].map((stat, i) => (
+          <div
+            key={i}
+            className="p-5 rounded-lg border bg-white hover:shadow-lg transition-all flex items-center justify-between"
+          >
+            <div>
+              <div className="text-sm text-gray-500">{stat.label}</div>
+              <div className="text-2xl font-bold text-gray-800">
+                {stat.value}
+              </div>
+            </div>
+            <div
+              className={`w-12 h-12 flex items-center justify-center rounded-lg font-semibold ${
+                stat.color === "green"
+                  ? "bg-green-100 text-green-700"
+                  : stat.color === "red"
+                  ? "bg-red-100 text-red-600"
+                  : "bg-yellow-100 text-yellow-700"
+              }`}
+            >
+              {stat.change}
+            </div>
+          </div>
+        ))}
+      </section>
 
       <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden p-4 mt-3">
         <div className="flex justify-between items-center gap-4 mb-4 mt-2">
@@ -139,13 +181,13 @@ export default function Department() {
                         title="Edit Job"
                         className="p-2 rounded-md hover:bg-green-100 text-green-500 hover:text-green-600 transition-all"
                       >
-                        <FaEdit size={14} />
+                        <Edit />
                       </button>
                       <button
                         title="Delete Job"
-                        className="p-2 rounded-md hover:bg-red-100 text-red-500 hover:text-red-500 transition-all"
+                        className="p-2 rounded-md hover:bg-red-100 text-red-500 hover:text-red-500 transition-all justify-center item-center"
                       >
-                        <FaTrash size={14} />
+                        <Trash />
                       </button>
                     </div>
                   </td>

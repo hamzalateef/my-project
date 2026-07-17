@@ -1,22 +1,29 @@
-import { Navigate, Route, Routes } from "react-router";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
 import Sidebar from "./components/sidebar";
 import Setting from "./pages/setting/setting";
-import Profile from "./pages/setting/profile";
-import Content from "./pages/setting/content";
+// import Content from "./pages/setting/content";
 import Companies from "./pages/companies";
 import Department from "./pages/department";
 import Jobs from "./pages/jobs";
 import Header from "./components/header";
-import { useLocation } from "react-router";
+import Users from "./pages/users";
+import Signup from "./pages/signup";
+import Login from "./pages/login";
+// import Login from "./pages/setting/login";
+// import Inputpage from "./pages/setting/Inputpage";
+import Notification from "./pages/setting/notification";
+import { Profile } from "./pages/profile";
+import Security from "./pages/setting/security";
+import System from "./pages/setting/system";
 
 const App = () => {
   const location = useLocation();
-  const path = location.pathname.slice(1); // remove leading '/'
+  const path = location.pathname.slice(1);
   const formatted = path.charAt(0).toUpperCase() + path.slice(1);
   return (
     <div className="h-screen w-full flex">
-      <div className="w-56">
+      <div className="w-56 hidden lg:block">
         <Sidebar />
       </div>
       <div className="w-full h-screen overflow-y-auto bg-gray-100">
@@ -24,13 +31,21 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
 
+          <Route path="/users" element={<Users />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/department" element={<Department />} />
           <Route path="/companies" element={<Companies />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Setting />}>
-            <Route index element={<Navigate to="profile" replace />} />
-            <Route path="profile" element={<Profile />} />
+            <Route index element={<Navigate to="login" replace />} />
+            {/* <Route path="login" element={<Login />} />
             <Route path="content" element={<Content />} />
+            <Route path="inputpage" element={<Inputpage />} /> */}
+            <Route path="notification" element={<Notification />} />
+            <Route path="security" element={<Security />} />
+            <Route path="system" element={<System />} />
           </Route>
         </Routes>
       </div>

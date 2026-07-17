@@ -48,7 +48,7 @@ import {
 import Trash from "@/components/trash";
 import Edit from "@/components/edit";
 
-export default function Jobs() {
+export default function Users() {
   const jobs = [
     {
       id: 1,
@@ -144,17 +144,16 @@ export default function Jobs() {
 
   return (
     <main className="flex-1 p-6 md:px-8 bg-gray-100 min-h-screen overflow-y-auto">
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: "Total Jobs", value: 128, change: "+5", color: "green" },
-          { label: "Open Jobs", value: 83, change: "+2", color: "green" },
-          { label: "Closed Jobs", value: 45, change: "-3", color: "red" },
-          { label: "Opening Soon", value: 18, change: "+5", color: "green" },
-          { label: "Not Announced", value: 3, change: "+1", color: "yellow" },
+          { label: "Total Users", value: 1249, change: "+5", color: "green" },
+          { label: "Active Users", value: 243, change: "+2", color: "green" },
+          { label: "New Users", value: 183, change: "+2", color: "green" },
+          { label: "Past Users", value: 45, change: "-3", color: "red" },
         ].map((stat, i) => (
           <div
             key={i}
-            className="p-4 rounded-lg border bg-white hover:shadow-lg transition-all flex items-center justify-between"
+            className="p-4 rounded-lg border bg-white transition-all flex items-center justify-between"
           >
             <div>
               <div className="text-sm text-gray-500">{stat.label}</div>

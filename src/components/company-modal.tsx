@@ -48,6 +48,7 @@ const CompanyFormModal = () => {
       requirement: "",
       education: "",
       jobtype: "",
+      posted: "",
       expire: "",
     },
   });
@@ -134,12 +135,9 @@ const CompanyFormModal = () => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        <SelectItem value="Open">Open</SelectItem>
-                        <SelectItem value="Closed">Closed</SelectItem>
+                        <SelectItem value="Open">Public</SelectItem>
+                        <SelectItem value="Closed">Private</SelectItem>
                         <SelectItem value="Coming Soon">Coming Soon</SelectItem>
-                        <SelectItem value="Not Announced">
-                          Not Announced
-                        </SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
@@ -151,7 +149,7 @@ const CompanyFormModal = () => {
             <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
-                name="min"
+                name="posted"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Posted On</FormLabel>
