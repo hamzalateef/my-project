@@ -2,7 +2,6 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Dashboard from "./pages/dashboard";
 import Sidebar from "./components/sidebar";
 import Setting from "./pages/setting/setting";
-// import Content from "./pages/setting/content";
 import Companies from "./pages/companies";
 import Department from "./pages/department";
 import Jobs from "./pages/jobs";
@@ -11,8 +10,6 @@ import Header from "./components/header";
 import Users from "./pages/users";
 import Signup from "./pages/signup";
 import Login from "./pages/login";
-// import Login from "./pages/setting/login";
-// import Inputpage from "./pages/setting/Inputpage";
 import Notification from "./pages/setting/notification";
 import { Profile } from "./pages/profile";
 import Security from "./pages/setting/security";
@@ -39,12 +36,9 @@ const App = () => {
           <Route path="/department" element={<Department />} />
           <Route path="/companies" element={<Companies />} />
           <Route path="/profile" element={<Profile />} />
+            <Route path="notification" element={<Notification />} />
           <Route path="/settings" element={<Setting />}>
             <Route index element={<Navigate to="login" replace />} />
-            {/* <Route path="login" element={<Login />} />
-            <Route path="content" element={<Content />} />
-            <Route path="inputpage" element={<Inputpage />} /> */}
-            <Route path="notification" element={<Notification />} />
             <Route path="security" element={<Security />} />
             <Route path="system" element={<System />} />
           </Route>

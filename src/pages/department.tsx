@@ -55,7 +55,7 @@ export default function Department() {
   ];
 
   return (
-    <main className="flex-1 p-6 md:px-8 bg-gray-100 min-h-screen overflow-y-auto">
+    <main className="flex-1 p-6 md:px-4 bg-gray-100 min-h-screen overflow-y-auto">
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           {
@@ -64,7 +64,12 @@ export default function Department() {
             change: "+5",
             color: "green",
           },
-          { label: "Open Departments", value: 93, change: "+3", color: "green" },
+          {
+            label: "Open Departments",
+            value: 93,
+            change: "+3",
+            color: "green",
+          },
           { label: "New Departments", value: 83, change: "+2", color: "green" },
           { label: "Opening Soon", value: 18, change: "+5", color: "yellow" },
         ].map((stat, i) => (
@@ -83,8 +88,8 @@ export default function Department() {
                 stat.color === "green"
                   ? "bg-green-100 text-green-700"
                   : stat.color === "red"
-                  ? "bg-red-100 text-red-600"
-                  : "bg-yellow-100 text-yellow-700"
+                    ? "bg-red-100 text-red-600"
+                    : "bg-yellow-100 text-yellow-700"
               }`}
             >
               {stat.change}

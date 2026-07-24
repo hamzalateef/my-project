@@ -57,7 +57,7 @@ export default function Companies() {
   ];
 
   return (
-    <main className="flex-1 p-6 md:p-8 bg-gray-100 min-h-screen overflow-y-auto">
+    <main className="flex-1 p-6 md:p-4 bg-gray-100 min-h-screen overflow-y-auto">
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
           {
@@ -90,8 +90,8 @@ export default function Companies() {
                 stat.color === "green"
                   ? "bg-green-100 text-green-700"
                   : stat.color === "red"
-                  ? "bg-red-100 text-red-600"
-                  : "bg-yellow-100 text-yellow-700"
+                    ? "bg-red-100 text-red-600"
+                    : "bg-yellow-100 text-yellow-700"
               }`}
             >
               {stat.change}

@@ -34,13 +34,12 @@ import { loginSchema } from "@/lib/schema";
 import type z from "zod";
 
 interface JobFormModalProps {
-  triggerLabel?: string
-  triggerClassName?: string
-  triggerIcon?: React.ReactNode
+  triggerLabel?: string;
+  triggerClassName?: string;
+  triggerIcon?: React.ReactNode;
 }
 
-const JobFormModal = ({
-}: JobFormModalProps) => {
+const JobFormModal = ({}: JobFormModalProps) => {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {

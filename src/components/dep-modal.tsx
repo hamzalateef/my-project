@@ -67,7 +67,9 @@ const DeparmentFormModal = () => {
       </DialogTrigger>
       <DialogContent className="max-w-2xl h-96 overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold">Add Department</DialogTitle>
+          <DialogTitle className="text-xl font-bold">
+            Add Department
+          </DialogTitle>
           <DialogDescription>Fill all the job details below.</DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -120,30 +122,30 @@ const DeparmentFormModal = () => {
             />
 
             <FormField
-                control={form.control}
-                name="status"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Status</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Select Status" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="Open">Open</SelectItem>
-                        <SelectItem value="Closed">Closed</SelectItem>
-                        <SelectItem value="Coming Soon">Coming Soon</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              control={form.control}
+              name="status"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Status</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select Status" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="Open">Open</SelectItem>
+                      <SelectItem value="Closed">Closed</SelectItem>
+                      <SelectItem value="Coming Soon">Coming Soon</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
             {/* MIN/MAX SALARY */}
             <div className="grid grid-cols-2 gap-4">

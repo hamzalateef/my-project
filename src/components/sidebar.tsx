@@ -1,4 +1,4 @@
-import { AppWindowIcon, LogOut, User } from "lucide-react";
+import { AppWindowIcon, Bell, BellDot, LogOut, User } from "lucide-react";
 import type { ISidebar } from "../types/sidebar";
 import { AppWindow, Cog, Command, LayoutDashboard, Users } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -47,6 +47,12 @@ const Sidebar = () => {
       title: "Companies",
       path: "/companies",
       icon: Command,
+    },
+    {
+      id: "notification",
+      title: "Notification",
+      path: "/notification",
+      icon: Bell,
     },
     {
       id: "profile",
