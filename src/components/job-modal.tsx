@@ -15,7 +15,8 @@ import {
   SelectGroup,
   SelectLabel,
 } from "@/components/ui/select";
-import { FaPlus } from "react-icons/fa";
+import { Add01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { Button } from "@/components/ui/button";
 import { DialogHeader, DialogFooter } from "@/components/ui/dialog";
 import {
@@ -39,7 +40,11 @@ interface JobFormModalProps {
   triggerIcon?: React.ReactNode;
 }
 
-const JobFormModal = ({}: JobFormModalProps) => {
+const JobFormModal = ({
+  triggerLabel = "Create Job",
+  triggerClassName,
+  triggerIcon,
+}: JobFormModalProps) => {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -65,9 +70,9 @@ const JobFormModal = ({}: JobFormModalProps) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="text-white gap-1 bg-green-600 hover:bg-green-700">
-          <FaPlus />
-          Create Job
+        <Button className={triggerClassName}>
+          {triggerIcon ?? <HugeiconsIcon icon={Add01Icon} strokeWidth={2} data-icon="inline-start" />}
+          {triggerLabel}
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-2xl h-96 overflow-y-auto">

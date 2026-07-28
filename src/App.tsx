@@ -1,34 +1,43 @@
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import Dashboard from "./pages/dashboard";
-import Sidebar from "./components/sidebar";
-import Setting from "./pages/setting/setting";
-import Companies from "./pages/companies";
-import Department from "./pages/department";
-import Jobs from "./pages/jobs";
-import login from "./pages/login";
-import Header from "./components/header";
-import Users from "./pages/users";
-import Signup from "./pages/signup";
-import Login from "./pages/login";
-import Notification from "./pages/setting/notification";
-import { Profile } from "./pages/profile";
-import Security from "./pages/setting/security";
-import System from "./pages/setting/system";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom"
 
-const App = () => {
-  const location = useLocation();
-  const path = location.pathname.slice(1);
-  const formatted = path.charAt(0).toUpperCase() + path.slice(1);
+import { AppSidebar } from "@/components/app-sidebar"
+import Header from "@/components/header"
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
+import Companies from "@/pages/companies"
+import Dashboard from "@/pages/dashboard"
+import Department from "@/pages/department"
+import Jobs from "@/pages/jobs"
+import Login from "@/pages/login"
+import { Profile } from "@/pages/profile"
+import Signup from "@/pages/signup"
+import Notification from "@/pages/setting/notification"
+import Security from "@/pages/setting/security"
+import Setting from "@/pages/setting/setting"
+import System from "@/pages/setting/system"
+import Users from "@/pages/users"
+
+const pageTitles: Record<string, string> = {
+  "/": "Dashboard",
+  "/users": "Users",
+  "/jobs": "Jobs",
+  "/department": "Department",
+  "/companies": "Companies",
+  "/notification": "Notifications",
+  "/profile": "Profile",
+  "/settings": "Settings",
+}
+
+export default function App() {
+  const location = useLocation()
+  const title = pageTitles[location.pathname] ?? "JobZone"
+
   return (
-    <div className="h-screen w-full flex">
-      <div className="w-56 hidden lg:block">
-        <Sidebar />
-      </div>
-      <div className="w-full h-screen overflow-y-auto bg-gray-100">
-        <Header title={formatted} />
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <Header title={title} />
         <Routes>
           <Route path="/" element={<Dashboard />} />
-
           <Route path="/users" element={<Users />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -36,16 +45,13 @@ const App = () => {
           <Route path="/department" element={<Department />} />
           <Route path="/companies" element={<Companies />} />
           <Route path="/profile" element={<Profile />} />
-            <Route path="notification" element={<Notification />} />
-          <Route path="/settings" element={<Setting />}>
-            <Route index element={<Navigate to="login" replace />} />
-            <Route path="security" element={<Security />} />
-            <Route path="system" element={<System />} />
-          </Route>
+          <Route path="/notification" element={<Notification />} />
+          <Route path="/settings" element={<Setting />} />
+          <Route path="/settings/security" element={<Security />} />
+          <Route path="/settings/system" element={<System />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </div>
-    </div>
-  );
-};
-
-export default App;
+      </SidebarInset>
+    </SidebarProvider>
+  )
+}

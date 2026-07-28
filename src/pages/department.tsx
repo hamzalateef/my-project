@@ -1,207 +1,31 @@
-import { FaBriefcase, FaEdit, FaPlus, FaSearch, FaTrash } from "react-icons/fa";
-import Header from "../components/header";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
-import { Search } from "lucide-react";
-import CompaniesFormModal from "@/components/dep-modal";
-import DeparmentFormModal from "@/components/dep-modal";
-import Trash from "@/components/trash";
-import Edit from "@/components/edit";
+import * as React from "react"
+import type { ColumnDef } from "@tanstack/react-table"
+import { Folder01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
+
+import { DataTable } from "@/components/data-table"
+import { RecordActions } from "@/components/record-actions"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+
+type DepartmentRecord = { id: number; name: string; lead: string; members: number; status: "Active" | "Planning"; updated: string }
+
+const initialDepartments: DepartmentRecord[] = [
+  { id: 1, name: "Engineering", lead: "Hamza Khan", members: 24, status: "Active", updated: "Jun 7, 2025" },
+  { id: 2, name: "Product Design", lead: "Sana Raza", members: 9, status: "Active", updated: "May 25, 2025" },
+  { id: 3, name: "Marketing", lead: "Ayesha Malik", members: 12, status: "Planning", updated: "Apr 18, 2025" },
+  { id: 4, name: "People Operations", lead: "Bilal Ahmed", members: 6, status: "Active", updated: "Mar 9, 2025" },
+]
 
 export default function Department() {
-  const jobs = [
-    {
-      id: 1,
-      company: "TechWave Ltd",
-      image: "https://cdn-icons-png.flaticon.com/512/1048/1048949.png",
-      description:
-        "Innovative tech solutions provider delivering smart, scalable software for modern businesses.",
-      status: "Public",
-      created: "07/06/2025",
-      updated: "07/06/2026",
-    },
-    {
-      id: 2,
-      company: "SoftCore Inc",
-      image: "https://cdn-icons-png.flaticon.com/512/1048/1048913.png",
-      description: "...",
-      status: "Private",
-      created: "18/04/2024",
-      updated: "18/04/2025",
-    },
-    {
-      id: 3,
-      company: "SoftCore Inc",
-      image: "https://cdn-icons-png.flaticon.com/512/742/742751.png",
-      description:
-        "Leading technology firm building reliable software products for various industry requirements.",
-      status: "Public",
-      created: "09/01/2023",
-      updated: "09/01/2025",
-    },
-    {
-      id: 4,
-      company: "Designify Studio",
-      image: "https://cdn-icons-png.flaticon.com/512/1828/1828884.png",
-      description:
-        "Creative design agency delivering unique branding, UI/UX, and modern digital experiences.",
-      status: "Private",
-      created: "15/03/2024",
-      updated: "15/03/2025",
-    },
-  ];
-
-  return (
-    <main className="flex-1 p-6 md:px-4 bg-gray-100 min-h-screen overflow-y-auto">
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {[
-          {
-            label: "Total Departments",
-            value: 128,
-            change: "+5",
-            color: "green",
-          },
-          {
-            label: "Open Departments",
-            value: 93,
-            change: "+3",
-            color: "green",
-          },
-          { label: "New Departments", value: 83, change: "+2", color: "green" },
-          { label: "Opening Soon", value: 18, change: "+5", color: "yellow" },
-        ].map((stat, i) => (
-          <div
-            key={i}
-            className="p-5 rounded-lg border bg-white hover:shadow-lg transition-all flex items-center justify-between"
-          >
-            <div>
-              <div className="text-sm text-gray-500">{stat.label}</div>
-              <div className="text-2xl font-bold text-gray-800">
-                {stat.value}
-              </div>
-            </div>
-            <div
-              className={`w-12 h-12 flex items-center justify-center rounded-lg font-semibold ${
-                stat.color === "green"
-                  ? "bg-green-100 text-green-700"
-                  : stat.color === "red"
-                    ? "bg-red-100 text-red-600"
-                    : "bg-yellow-100 text-yellow-700"
-              }`}
-            >
-              {stat.change}
-            </div>
-          </div>
-        ))}
-      </section>
-
-      <div className="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden p-4 mt-3">
-        <div className="flex justify-between items-center gap-4 mb-4 mt-2">
-          <div className="text-2xl ml-3">
-            <b>All Departments</b>
-          </div>
-          <div className="flex justify-end items-center gap-4">
-            <InputGroup className="w-full md:w-72 bg-white">
-              <InputGroupInput placeholder="Search..." />
-              <InputGroupAddon>
-                <Search />
-              </InputGroupAddon>
-            </InputGroup>
-            <DeparmentFormModal />
-          </div>
-        </div>
-        <div className="overflow-x-auto rounded-xl">
-          <table className="min-w-full text-sm text-gray-700 rounded-xl">
-            <thead className="bg-gradient-to-r from-green-600 to-emerald-500 text-white text-xs uppercase tracking-wide rounded-xl">
-              <tr>
-                <th className="px-6 py-4 text-left font-semibold">Id</th>
-                <th className="px-6 py-4 text-left font-semibold">
-                  Departments
-                </th>
-                <th className="px-6 py-4 text-left font-semibold">Image</th>
-                <th className="px-6 py-4 text-left font-semibold">
-                  Description
-                </th>
-                <th className="px-6 py-4 text-left font-semibold">Status</th>
-                <th className="px-6 py-4 text-center font-semibold">Created</th>
-                <th className="px-6 py-4 text-center font-semibold">Updated</th>
-                <th className="px-6 py-4 text-right font-semibold">Actions</th>
-              </tr>
-            </thead>
-
-            <tbody className="divide-y divide-gray-100">
-              {jobs.map((job, i) => (
-                <tr
-                  key={job.id}
-                  className={`transition-all duration-200 hover:bg-green-50 ${
-                    i % 2 === 0 ? "bg-white" : "bg-gray-50"
-                  }`}
-                >
-                  <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    {job.id}
-                  </td>
-                  <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    {job.company}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <img
-                      src={job.image ? job.image : "/default-company.png"}
-                      alt="Company Logo"
-                      className="w-10 h-10 rounded-full object-cover border border-gray-300 shadow-sm"
-                    />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {job.description}
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium ${
-                        job.status === "Public"
-                          ? "bg-green-50 border border-gray-200 text-green-600"
-                          : "bg-red-50 border border-gray-200 text-red-600"
-                      }`}
-                    >
-                      <span
-                        className={`w-2 h-2 rounded-full ${
-                          job.status === "Public"
-                            ? "bg-green-500"
-                            : "bg-red-500"
-                        }`}
-                      ></span>
-                      {job.status}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 text-center font-semibold text-gray-800">
-                    {job.created}
-                  </td>
-                  <td className="px-6 py-4 text-center font-semibold text-gray-800">
-                    {job.updated}
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    <div className="flex items-center justify-end gap-3">
-                      <button
-                        title="Edit Job"
-                        className="p-2 rounded-md hover:bg-green-100 text-green-500 hover:text-green-600 transition-all"
-                      >
-                        <Edit />
-                      </button>
-                      <button
-                        title="Delete Job"
-                        className="p-2 rounded-md hover:bg-red-100 text-red-500 hover:text-red-500 transition-all justify-center item-center"
-                      >
-                        <Trash />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </main>
-  );
+  const [departments, setDepartments] = React.useState(initialDepartments)
+  const removeDepartment = React.useCallback((id: number) => setDepartments((current) => current.filter((department) => department.id !== id)), [])
+  const columns = React.useMemo<ColumnDef<DepartmentRecord>[]>(() => [
+    { accessorKey: "name", header: "Department", cell: ({ row }) => <div className="flex flex-col"><span className="font-medium">{row.original.name}</span><span className="text-xs text-muted-foreground">Lead: {row.original.lead}</span></div> },
+    { accessorKey: "members", header: "Members", cell: ({ row }) => `${row.original.members} members` },
+    { accessorKey: "status", header: "Status", cell: ({ row }) => <Badge variant={row.original.status === "Active" ? "default" : "secondary"}>{row.original.status}</Badge> },
+    { accessorKey: "updated", header: "Updated" },
+    { id: "actions", enableSorting: false, header: "", cell: ({ row }) => <RecordActions label={row.original.name} onDelete={() => removeDepartment(row.original.id)} /> },
+  ], [removeDepartment])
+  return <main className="flex flex-1 flex-col gap-6 overflow-y-auto p-4 md:p-6"><Card><CardHeader><CardTitle className="flex items-center gap-2"><HugeiconsIcon icon={Folder01Icon} strokeWidth={2} />Departments</CardTitle><CardDescription>Organize the teams that support your hiring operation.</CardDescription></CardHeader><CardContent><DataTable columns={columns} data={departments} filterColumn="name" filterPlaceholder="Search departments..." /></CardContent></Card></main>
 }

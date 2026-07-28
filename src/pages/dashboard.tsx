@@ -1,115 +1,85 @@
-import JobFormModal from "@/components/job-modal";
-import { ChartLineLabel } from "@/components/line-chart";
-import { Button } from "@/components/ui/button";
-import { ChartAreaLegend } from "@/components/vacancy-chart";
 import {
-  Users,
-  UserPlus,
-  Briefcase,
-  BriefcaseBusiness,
-  Building2,
-  Link,
-} from "lucide-react";
+  Briefcase01Icon,
+  Building01Icon,
+  ChartRingIcon,
+  UserGroupIcon,
+  UserIcon,
+} from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
+
+import JobFormModal from "@/components/job-modal"
+import { ChartLineLabel } from "@/components/line-chart"
+import { ChartAreaLegend } from "@/components/vacancy-chart"
+import { Button } from "@/components/ui/button"
 import {
-  FaPlus,
-  FaTachometerAlt,
-  FaBell,
-  FaUsers,
-  FaBriefcase,
-  FaBuilding,
-  FaFileAlt,
-  FaChartBar,
-  FaCogs,
-  FaSignOutAlt,
-} from "react-icons/fa";
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+const stats = [
+  { title: "Total Users", value: "1,284", description: "Unread", icon: UserGroupIcon },
+  { title: "New Users", value: "452", description: "Since last week", icon: UserIcon },
+  { title: "Total Jobs", value: "93", description: "This month", icon: Briefcase01Icon },
+  { title: "Active Jobs", value: "57", description: "Open positions", icon: ChartRingIcon },
+  { title: "Companies", value: "26", description: "Registered companies", icon: Building01Icon },
+]
 
 export default function Dashboard() {
-  const stats = [
-    {
-      title: "Total Users",
-      value: 1284,
-      subtitle: "Unread",
-      icon: () => <Users className="text-green-500" />,
-    },
-    {
-      title: "New Users",
-      value: 452,
-      subtitle: "Since last week",
-      icon: () => <UserPlus className="text-green-500" />,
-    },
-    {
-      title: "Total Jobs",
-      value: 93,
-      subtitle: "This month",
-      icon: () => <Briefcase className="text-green-500" />,
-    },
-    {
-      title: "Active Jobs",
-      value: 57,
-      subtitle: "Open positions",
-      icon: () => <BriefcaseBusiness className="text-green-500" />,
-    },
-    {
-      title: "Companies",
-      value: 26,
-      subtitle: "Registered companies",
-      icon: () => <Building2 className="text-green-500" />,
-    },
-  ];
-
-  const activities = [
-    "User Ali signed up",
-    'Job "Frontend Dev" approved',
-    "Report generated: Oct 28",
-    "Sana updated profile",
-  ];
-
   return (
-    <main className="flex-1 p-6 overflow-y-auto">
-      <section className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-        {stats.map((s, i) => (
-          <div
-            key={i}
-            className="p-4 rounded-lg border bg-white flex items-center justify-between"
-          >
-            <div>
-              <div className="text-sm text-gray-500">{s.title}</div>
-              <div className="text-2xl font-bold">{s.value}</div>
-              <div className="text-xs text-gray-400 mt-1">{s.subtitle}</div>
-            </div>
-            <div className="mr-2">
-              <s.icon />
-            </div>
-          </div>
+    <main className="flex flex-1 flex-col gap-6 overflow-y-auto p-4 md:p-6">
+      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+        {stats.map((stat) => (
+          <Card key={stat.title} size="sm">
+            <CardHeader>
+              <CardTitle>{stat.title}</CardTitle>
+              <CardDescription>{stat.description}</CardDescription>
+              <CardAction>
+                <HugeiconsIcon icon={stat.icon} strokeWidth={2} className="text-primary" />
+              </CardAction>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-semibold tabular-nums">{stat.value}</p>
+            </CardContent>
+          </Card>
         ))}
       </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white p-4 rounded-lg shadow">
-          <ChartLineLabel />
-        </div>
-        <div className="bg-white p-4 rounded-lg shadow">
-          <ChartAreaLegend />
-        </div>
-      </div>
-      <div className="bg-white p-4 rounded-lg shadow w-96 mt-5">
-        <div>
-          <h4 className="font-semibold mb-2">Quick Actions</h4>
-          <div className="flex flex-col gap-2.5 mb-2">
-            <JobFormModal
-              triggerLabel="Create Job"
-              triggerClassName="bg-green-500 hover:bg-green-600 hover:text-white"
-              triggerIcon={<FaPlus />}
-            />
-            <Button className="px-4 py-2 rounded-md bg-gray-50 border border-green-400 text-green-500 hover:text-white hover:bg-green-600">
-              Invite User
-            </Button>
-            <Button className="px-4 py-2 rounded-md text-gray-500 hover:text-white bg-gray-50 border border-gray-400 hover:bg-black">
-              Export CSV
-            </Button>
-          </div>
-        </div>
-      </div>
+      <section className="grid gap-6 xl:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Job activity</CardTitle>
+            <CardDescription>Recent application trends</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartLineLabel />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Vacancies</CardTitle>
+            <CardDescription>Open position overview</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ChartAreaLegend />
+          </CardContent>
+        </Card>
+      </section>
+
+      <Card className="max-w-sm">
+        <CardHeader>
+          <CardTitle>Quick actions</CardTitle>
+          <CardDescription>Manage common JobZone tasks.</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-2">
+          <JobFormModal triggerLabel="Create Job" />
+          <Button variant="outline">Invite User</Button>
+          <Button variant="secondary">Export CSV</Button>
+        </CardContent>
+      </Card>
     </main>
-  );
+  )
 }
